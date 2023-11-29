@@ -1,4 +1,7 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Subscription } from "rxjs";
+import { IProduct } from "src/app/modals/products";
+import { ProductsService } from "src/app/services/products.service";
 
 @Component({
   selector: "app-products",
@@ -7,12 +10,25 @@ import { Component, OnInit } from "@angular/core";
 })
 
 export class ProductsComponent implements OnInit {
-  
-  constructor() { 
 
+  public products: IProduct[];
+  private productsSubscription: Subscription;
+  
+  constructor(private productsService: ProductsService) { 
   }
 
   ngOnInit() {
+    debugger
+    this.productsSubscription = this.productsService.getProducts()
+    .subscribe(result => {
+      debugger
+      this.products = result;
+    })
+  }
 
+  ngOnDestroy() {
+    if(this.productsSubscription) {
+      this.productsSubscription.unsubscribe();
+    }
   }
 }
