@@ -33,12 +33,32 @@ export class ProductsService {
     return this.http.post<IProduct>('http://localhost:3000/products', newProduct);
   }
 
-  editProduct(changedProduct: IProduct) {
+  updateProduct(changedProduct: IProduct) {
+    debugger
     return this.http.put<any>(`http://localhost:3000/products/${changedProduct.id}`, changedProduct);
   }
 
   deleteProduct(id: any) {
     debugger
     return this.http.delete<any>(`http://localhost:3000/products/${id}`);
+  }
+
+  postToBasket(product: IProduct) {
+    debugger
+    return this.http.post<IProduct>('http://localhost:3000/basket', product);
+  }
+
+  updateToBasket(newItem: IProduct) {
+    debugger
+    return this.http.put<any>(`http://localhost:3000/basket/${newItem.id}`, newItem);
+  }
+
+  getBasket(): Observable<IProduct[]> {
+    return this.http.get<IProduct[]>('http://localhost:3000/basket');
+  }
+
+  removeFromBasket(id: string) {
+    debugger
+    return this.http.delete<any>(`http://localhost:3000/basket/${id}`);
   }
 }

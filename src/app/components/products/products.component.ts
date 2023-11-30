@@ -19,6 +19,8 @@ export class ProductsComponent implements OnInit, OnDestroy {
   private productsSubscription: Subscription;
   canEdit: boolean = false;
   chocenProductId: string | undefined;
+  basket: IProduct[];
+  basketSubscription: Subscription;
   
   constructor(private productsService: ProductsService, public dialog: MatDialog) { 
   }
@@ -31,6 +33,11 @@ export class ProductsComponent implements OnInit, OnDestroy {
       debugger
       this.products = result;
     })
+
+    this.basketSubscription = this.productsService.getBasket()
+      .subscribe(data => {
+        this.basket = data;
+      })
   }
 
   openAddDialog(): void {
@@ -40,7 +47,9 @@ export class ProductsComponent implements OnInit, OnDestroy {
     const dialogRef = this.dialog.open(AddDialogComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe(result => {
-      this.postProduct(result);
+      if(result) {
+        this.postProduct(result);
+      }
       console.log('The add-dialog was closed');
     });
   }
@@ -60,8 +69,9 @@ export class ProductsComponent implements OnInit, OnDestroy {
 
     dialogRef.afterClosed().subscribe(result => {
       debugger
-      this.editProduct(result);
-      // this.postProduct(result);
+      if(result) {
+        this.updateProduct(result);
+      }
       console.log('The edit-dialog was closed');
     });
   }
@@ -81,7 +91,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
       if(result) {
         this.deleteProduct();
       }
-      console.log('The edit-dialog was closed');
+      console.log('The delete-dialog was closed');
     });
   }
 
@@ -92,8 +102,19 @@ export class ProductsComponent implements OnInit, OnDestroy {
     })
   }
 
-  editProduct(result: any) {
-
+  updateProduct(chocenProduct: IProduct) {
+    this.productsService.updateProduct(chocenProduct)
+    .subscribe(result => {
+      debugger
+      this.products = this.products.map(product => {
+        if(product.id === chocenProduct.id) {
+          return result;
+        } else {
+          return product;
+        }
+      })
+      debugger
+    })
   }
 
   deleteProduct() {
@@ -106,9 +127,51 @@ export class ProductsComponent implements OnInit, OnDestroy {
     })
   }
 
+  addToBasket(product: IProduct) {
+    debugger
+    product.quantity = 1;
+    if(this.basket.length > 0) {
+      debugger
+      let findItem = this.basket.find(elem => {
+        return elem.id === product.id;
+      })
+      debugger
+      if(findItem) {
+        debugger
+        this.updateToBasket(findItem);
+      } else {
+        debugger
+        this.postToBasket(product);
+      }
+      debugger
+    } else {
+      debugger
+      this.postToBasket(product);
+    }
+  }
+
+  postToBasket(newItem: IProduct) {
+    this.productsService.postToBasket(newItem)
+    .subscribe(data => {
+      this.basket.push(data)
+    })
+  }
+
+  updateToBasket(newItem: IProduct) {
+    // @ts-ignore
+    newItem.quantity += 1;
+    this.productsService.updateToBasket(newItem)
+    .subscribe(data => {
+      this.basket.push(data)
+    })
+  }
+
   ngOnDestroy() {
     if(this.productsSubscription) {
       this.productsSubscription.unsubscribe();
+    }
+    if(this.basketSubscription) {
+      this.basketSubscription.unsubscribe();
     }
   }
 }

@@ -32,17 +32,32 @@
         "batteryCapacity": "10000 mAh",
         "maxSpeed": "3 km/h"
       }
+    }
+  ],
+  "basket": [
+    {
+      "id": "3",
+      "title": "Robot vacuum cleaner",
+      "price": 500,
+      "year": "2023",
+      "image": "assets/images/Robot-vacuum-cleaner.jpg",
+      "configure": {
+        "batteryCapacity": "10000 mAh",
+        "maxSpeed": "3 km/h"
+      },
+      "quantity": 9
     },
     {
-      "title": "Q",
-      "image": "assets/images/Electro-scooter.jpg",
-      "year": "",
-      "price": "",
+      "id": "2",
+      "title": "Electro bicycle",
+      "price": 1000,
+      "year": "2022",
+      "image": "assets/images/Electro-bicycle.jpg",
       "configure": {
-        "batteryCapacity": "",
-        "maxSpeed": ""
+        "batteryCapacity": "50000 mAh",
+        "maxSpeed": "50 km/h"
       },
-      "id": "avftP38"
+      "quantity": 16
     }
   ]
 }

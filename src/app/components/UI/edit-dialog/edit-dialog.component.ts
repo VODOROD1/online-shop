@@ -9,16 +9,16 @@ import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 })
 
 export class EditDialogComponent implements OnInit {
-
-  dialogForm: FormGroup;
-  
   constructor(
     public dialogRef: MatDialogRef<any>,
     @Inject(MAT_DIALOG_DATA) public data: any,
   ) {}
 
+  dialogForm: FormGroup;
+
+
   onNoClick(): void {
-    this.dialogRef.close();
+    this.dialogRef.close(null);
   }
 
   ngOnInit() {
@@ -40,6 +40,7 @@ export class EditDialogComponent implements OnInit {
     debugger
     console.log(this.data);
     this.data = {
+      id: this.data.chocenProduct.id,
       title: this.dialogForm.value.title,
       image: "assets/images/Electro-scooter.jpg",
       year: this.dialogForm.value.year,
@@ -49,6 +50,7 @@ export class EditDialogComponent implements OnInit {
         maxSpeed: this.dialogForm.value.maxSpeed
       }
     }
+    debugger
     this.dialogRef.close(this.data);
   }
 }
