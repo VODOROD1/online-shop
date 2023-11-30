@@ -13,11 +13,20 @@ export class DialogBoxComponent implements OnInit {
     title: new FormControl('')
   });
   
-  constructor() { 
+  constructor(
+    public dialogRef: MatDialogRef<any>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+  ) {}
 
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 
   ngOnInit() {
 
+  }
+
+  test() {
+    console.log(this.data);
   }
 }
