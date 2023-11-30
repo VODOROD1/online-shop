@@ -1,1 +1,30 @@
-<h1>Products!!!</h1>
+<div class="container container__product">
+    <mat-toolbar color="primary" *ngIf="canEdit">
+        <mat-toolbar-row>
+            <span class="spacer">
+                <button mat-flat-button class="button" color="basic" (click)="openDialog()">Добавить товар</button>
+            </span>
+        </mat-toolbar-row>
+    </mat-toolbar>
+    <mat-card class="product" *ngFor="let product of products">
+        <mat-card-header>
+          <mat-card-title>{{product.title}}</mat-card-title>
+          <mat-card-subtitle>{{product.title}}</mat-card-subtitle>
+        </mat-card-header>
+        <img
+            mat-card-image
+            src="{{product.image}}"
+            class="product__image"
+            alt="{{product.title}}"
+        >
+        <mat-card-content>
+            <p>Price: {{product.price | currency: "EUR"}}</p>
+            <p>Year: {{product.year}}</p>
+            <p></p>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-flat-button class="button" color="primary">В корзину</button>
+            <button mat-flat-button class="button" color="primary" routerLink="/product/{{product.id}}">Подробнее</button>
+        </mat-card-actions>
+    </mat-card>
+</div>

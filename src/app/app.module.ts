@@ -8,11 +8,24 @@ import { HeaderComponent } from './components/UI/header/header.component';
 import { FooterComponent } from './components/UI/footer/footer.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
+import { HttpClientModule } from '@angular/common/http';
+import { ProductDetailsComponent } from './components/product-details/product-details.component';
+import { BasketComponent } from './components/basket/basket.component';
+import { BaseComponent } from './components/base/base.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 
 @NgModule({
   declarations: [
     AppComponent,
+    BaseComponent,
+    BasketComponent,
     ProductsComponent,
+    ProductDetailsComponent,
     HeaderComponent,
     FooterComponent
   ],
@@ -21,7 +34,15 @@ import {MatIconModule} from '@angular/material/icon';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
-    MatIconModule
+    MatIconModule,
+    MatButtonModule,
+    MatCardModule,
+    HttpClientModule,
+    MatDialogModule,
+    MatInputModule,
+    MatFormFieldModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
