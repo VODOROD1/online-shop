@@ -28,4 +28,17 @@ export class ProductsService {
       return elem;
     }))
   }
+
+  postProduct(newProduct: IProduct) {
+    return this.http.post<IProduct>('http://localhost:3000/products', newProduct);
+  }
+
+  editProduct(changedProduct: IProduct) {
+    return this.http.put<any>(`http://localhost:3000/products/${changedProduct.id}`, changedProduct);
+  }
+
+  deleteProduct(id: any) {
+    debugger
+    return this.http.delete<any>(`http://localhost:3000/products/${id}`);
+  }
 }
