@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { FormControl, FormGroup } from "@angular/forms";
 
 @Component({
   selector: "app-dialog-box",
@@ -7,6 +8,10 @@ import { Component, OnInit } from "@angular/core";
 })
 
 export class DialogBoxComponent implements OnInit {
+
+  myForm: FormGroup = new FormGroup({
+    title: new FormControl('')
+  });
   
   constructor() { 
 
