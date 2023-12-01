@@ -57,7 +57,7 @@ export class ProductsService {
     return this.http.get<IProduct[]>('http://localhost:3000/basket');
   }
 
-  removeFromBasket(id: string) {
+  removeFromBasket(id: string | undefined) {
     debugger
     return this.http.delete<any>(`http://localhost:3000/basket/${id}`);
   }

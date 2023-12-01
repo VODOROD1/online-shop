@@ -27,7 +27,40 @@ export class BasketComponent implements OnInit, OnDestroy {
   }
 
   removeItemFromBasket(id: string | undefined) {
+    this.productsService.removeFromBasket(id)
+    .subscribe(result => {
+      this.basket = this.basket.filter(item => item.id !== id)
+    })
+  }
 
+  minusQuantity(item: IProduct) {
+    // @ts-ignore
+    if(item.quantity === 1) {
+      this.removeItemFromBasket(item.id);
+    } else {
+      // @ts-ignore
+      item.quantity--;
+      this.updateToBasket(item);
+    }
+  }
+
+  plusQuantity(item: IProduct) {
+    // @ts-ignore
+    item.quantity++;
+    this.updateToBasket(item);
+  }
+
+  updateToBasket(item: IProduct) {
+    this.productsService.updateToBasket(item)
+    .subscribe(data => {
+      this.basket = this.basket.map(elem => {
+        if(elem.id === item.id) {
+          return item;
+        } else {
+          return elem;
+        }
+      })
+    })
   }
 
   ngOnDestroy() {

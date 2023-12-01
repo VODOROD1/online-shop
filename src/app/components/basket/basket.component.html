@@ -10,9 +10,9 @@
             alt="{{item.title}}"
         >
         <mat-card-actions>
-            <button class="button" mat-flat-button color="primary">-</button>
+            <button class="button" mat-flat-button color="primary" (click)="minusQuantity(item)">-</button>
             <p>Кол-во: {{item.quantity}}</p>
-            <button class="button" mat-flat-button color="primary">+</button>
+            <button class="button" mat-flat-button color="primary" (click)="plusQuantity(item)">+</button>
             <button mat-flat-button class="button" color="primary" (click)="removeItemFromBasket(item.id)">Удалить</button>
         </mat-card-actions>
     </mat-card>
