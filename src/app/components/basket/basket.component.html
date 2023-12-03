@@ -1,0 +1,19 @@
+<div class="container container__product">
+    <mat-card class="product" *ngFor="let item of basket">
+        <mat-card-header>
+          <mat-card-title>{{item.title}}</mat-card-title>
+        </mat-card-header>
+        <img
+            mat-card-image
+            src="{{item.image}}"
+            class="product__image"
+            alt="{{item.title}}"
+        >
+        <mat-card-actions>
+            <button class="button" mat-flat-button color="primary" (click)="minusQuantity(item)">-</button>
+            <p>Кол-во: {{item.quantity}}</p>
+            <button class="button" mat-flat-button color="primary" (click)="plusQuantity(item)">+</button>
+            <button mat-flat-button class="button" color="primary" (click)="removeItemFromBasket(item.id)">Удалить</button>
+        </mat-card-actions>
+    </mat-card>
+</div>

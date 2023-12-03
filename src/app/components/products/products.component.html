@@ -2,14 +2,13 @@
     <mat-toolbar color="primary" *ngIf="canEdit">
         <mat-toolbar-row>
             <span class="spacer">
-                <button mat-flat-button class="button" color="basic" (click)="openDialog()">Добавить товар</button>
+                <button mat-flat-button class="button" color="basic" (click)="openAddDialog()">Добавить товар</button>
             </span>
         </mat-toolbar-row>
     </mat-toolbar>
     <mat-card class="product" *ngFor="let product of products">
         <mat-card-header>
           <mat-card-title>{{product.title}}</mat-card-title>
-          <mat-card-subtitle>{{product.title}}</mat-card-subtitle>
         </mat-card-header>
         <img
             mat-card-image
@@ -23,8 +22,13 @@
             <p></p>
         </mat-card-content>
         <mat-card-actions>
-            <button mat-flat-button class="button" color="primary">В корзину</button>
+            <button mat-flat-button class="button" color="primary" (click)="addToBasket(product)">В корзину</button>
             <button mat-flat-button class="button" color="primary" routerLink="/product/{{product.id}}">Подробнее</button>
+            <button mat-flat-button [matMenuTriggerFor]="menu" class="button" color="primary">Действие</button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="openEditDialog(product.id)">Редактировать</button>
+                <button mat-menu-item (click)="openDeleteDialog(product.id)">Удалить</button>
+            </mat-menu>
         </mat-card-actions>
     </mat-card>
 </div>

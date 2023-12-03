@@ -9,6 +9,7 @@ import { FooterComponent } from './components/UI/footer/footer.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
+import {MatMenuModule} from '@angular/material/menu';
 import {MatCardModule} from '@angular/material/card';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
@@ -18,16 +19,28 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms'
+import { AddDialogComponent } from './components/UI/add-dialog/add-dialog.component';
+import { EditDialogComponent } from './components/UI/edit-dialog/edit-dialog.component';
+import { DeleteDialogComponent } from './components/UI/delete-dialog/delete-dialog.component';
+import { LoginComponent } from './components/login/login.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AuthGuard } from './guards/auth.guard';
 
 @NgModule({
   declarations: [
     AppComponent,
     BaseComponent,
     BasketComponent,
+    AddDialogComponent,
+    EditDialogComponent,
+    DeleteDialogComponent,
     ProductsComponent,
     ProductDetailsComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    LoginComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -36,13 +49,15 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms'
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
+    MatMenuModule,
     MatCardModule,
     HttpClientModule,
     MatDialogModule,
     MatInputModule,
     MatFormFieldModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

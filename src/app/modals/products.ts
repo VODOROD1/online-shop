@@ -1,10 +1,11 @@
 export interface IProduct {
-    id: string,
+    id?: string,
     title: string,
     price: number,
     year: string,
     image?:  string,
-    configure: IProductConfig
+    configure: IProductConfig,
+    quantity?: number;
 }
 
 export interface IProductConfig {

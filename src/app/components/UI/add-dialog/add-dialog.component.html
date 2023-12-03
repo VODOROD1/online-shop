@@ -1,0 +1,31 @@
+<div class="dialog">
+    <form class="example-form" [formGroup]="dialogForm" (ngSubmit)="onSubmit()">
+        <mat-form-field class="example-full-width">
+            <mat-label>Title</mat-label>
+            <input formControlName="title" matInput placeholder="title">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Image</mat-label>
+            <input formControlName="image" matInput placeholder="image">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Price</mat-label>
+            <input formControlName="price" matInput placeholder="price">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Year</mat-label>
+            <input formControlName="year" matInput placeholder="year">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>BatteryCapacity</mat-label>
+            <input formControlName="batteryCapacity" matInput placeholder="batteryCapacity">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>MaxSpeed</mat-label>
+            <input formControlName="maxSpeed" matInput placeholder="maxSpeed">
+        </mat-form-field>
+
+        <button mat-flat-button class="button" color="primary" type="submit">Добавить товар</button>
+        <button mat-flat-button class="button" color="primary" type="button" (click)="onNoClick()">Отмена</button>
+    </form>
+</div>

@@ -5,11 +5,6 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: flex-start;
-    // margin-bottom: 100px;
-
-    // &__product {
-    //     margin-bottom: 100px;
-    // }
 }
 
 mat-card {
@@ -29,8 +24,8 @@ mat-card-actions {
 
 .product {
     &__image {
-        max-width: 300px;
-        height: 150px;
+        max-width: 400px;
+        height: 200px;
     }
 
     margin: 20px;

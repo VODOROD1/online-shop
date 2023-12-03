@@ -1,37 +1,51 @@
 {
-    "products": [
-      {
-        "id": "1",
-        "title": "Electro scooter",
-        "price": 300,
-        "year": "2021",
-        "image": "assets/images/Electro-scooter.jpg",
-        "configure": {
-          "batteryCapacity": "25000 mAh",
-          "maxSpeed": "30 km/h"
-        }
-      },
-      {
-        "id": "2",
-        "title": "Electro bicycle",
-        "price": 1000,
-        "year": "2022",
-        "image": "assets/images/Electro-bicycle.jpg",
-        "configure": {
-          "batteryCapacity": "50000 mAh",
-          "maxSpeed": "50 km/h"
-        }
-      },
-      {
-        "id": "3",
-        "title": "Robot vacuum cleaner",
-        "price": 500,
-        "year": "2023",
-        "image": "assets/images/Robot-vacuum-cleaner.jpg",
-        "configure": {
-          "batteryCapacity": "10000 mAh",
-          "maxSpeed": "3 km/h"
-        }
+  "products": [
+    {
+      "id": "1",
+      "title": "Electro scooter",
+      "price": 300,
+      "year": "2021",
+      "image": "assets/images/Electro-scooter.jpg",
+      "configure": {
+        "batteryCapacity": "25000 mAh",
+        "maxSpeed": "30 km/h"
       }
-    ]
+    },
+    {
+      "id": "2",
+      "title": "Electro bicycle",
+      "price": 1000,
+      "year": "2022",
+      "image": "assets/images/Electro-bicycle.jpg",
+      "configure": {
+        "batteryCapacity": "50000 mAh",
+        "maxSpeed": "50 km/h"
+      }
+    },
+    {
+      "id": "3",
+      "title": "Robot vacuum cleaner",
+      "price": 500,
+      "year": "2023",
+      "image": "assets/images/Robot-vacuum-cleaner.jpg",
+      "configure": {
+        "batteryCapacity": "10000 mAh",
+        "maxSpeed": "3 km/h"
+      }
+    }
+  ],
+  "basket": [
+    {
+      "id": "1",
+      "title": "Electro scooter",
+      "price": 300,
+      "year": "2021",
+      "image": "assets/images/Electro-scooter.jpg",
+      "configure": {
+        "batteryCapacity": "25000 mAh",
+        "maxSpeed": "30 km/h"
+      },
+      "quantity": 10
+    }
+  ]
 }
