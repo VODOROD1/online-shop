@@ -22,6 +22,10 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 import { AddDialogComponent } from './components/UI/add-dialog/add-dialog.component';
 import { EditDialogComponent } from './components/UI/edit-dialog/edit-dialog.component';
 import { DeleteDialogComponent } from './components/UI/delete-dialog/delete-dialog.component';
+import { LoginComponent } from './components/login/login.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AuthGuard } from './guards/auth.guard';
 
 @NgModule({
   declarations: [
@@ -34,7 +38,9 @@ import { DeleteDialogComponent } from './components/UI/delete-dialog/delete-dial
     ProductsComponent,
     ProductDetailsComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    LoginComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +56,8 @@ import { DeleteDialogComponent } from './components/UI/delete-dialog/delete-dial
     MatInputModule,
     MatFormFieldModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
