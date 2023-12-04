@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {map, Observable} from 'rxjs';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {map, Observable, Subscription} from 'rxjs';
 import {User} from '../../user';
 import {ActivatedRoute} from '@angular/router';
 import {AdminService} from '../../services/admin.service';
@@ -9,16 +9,31 @@ import {AdminService} from '../../services/admin.service';
   templateUrl: './contacts-details.component.html',
   styleUrls: ['./contacts-details.component.scss']
 })
-export class ContactsDetailsComponent implements OnInit {
+export class ContactsDetailsComponent implements OnInit, OnDestroy {
 
   id!: number;
-  user!: Observable<User>;
+  // user!: Observable<User>;
+  user: User;
+  activatedRouteSubscription: Subscription;
 
   constructor(private activatedRoute: ActivatedRoute, private adminService: AdminService) {
   }
 
   ngOnInit(): void {
-    this.user = this.activatedRoute.data.pipe(map((data) => data?.['user'] ))
+    this.activatedRouteSubscription = this.activatedRoute.data
+    .subscribe(response => {
+      debugger
+      this.user = response['someKey'];
+    })
+
+    // this.user = this.activatedRoute.data.pipe(
+    //   map((data) => {
+    //     return data?.['user'];
+    //   })
+    // )
   }
 
+  ngOnDestroy() {
+    this.activatedRouteSubscription.unsubscribe();
+  }
 }
