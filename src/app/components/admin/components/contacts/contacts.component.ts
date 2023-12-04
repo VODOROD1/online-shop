@@ -18,7 +18,8 @@ export class ContactsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.personalList = this.activatedRoute.data.pipe(map((data) => data?.['users']));
+    // this.personalList = this.activatedRoute.data.pipe(map((data) => data?.['users']));
+    this.personalList = this.adminService.getPersonalList();
   }
 
 }
