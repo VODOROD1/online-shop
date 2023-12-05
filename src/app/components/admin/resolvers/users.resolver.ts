@@ -8,7 +8,7 @@ import { EMPTY, Observable, catchError, delay } from 'rxjs';
   providedIn: 'root'
 })
 
-export class usersResolver implements Resolve<User[]> {
+export class UsersResolver implements Resolve<User[]> {
 
   constructor(private adminService: AdminService, private router: Router) {
     

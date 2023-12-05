@@ -33,7 +33,6 @@ export class AddDialogComponent implements OnInit {
   }
 
   onSubmit() {
-    debugger
     console.log(this.data);
     this.data = {
       title: this.dialogForm.value.title,

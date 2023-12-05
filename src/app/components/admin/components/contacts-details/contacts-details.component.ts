@@ -22,15 +22,8 @@ export class ContactsDetailsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.activatedRouteSubscription = this.activatedRoute.data
     .subscribe(response => {
-      debugger
-      this.user = response['someKey'];
+      this.user = response['param'];
     })
-
-    // this.user = this.activatedRoute.data.pipe(
-    //   map((data) => {
-    //     return data?.['user'];
-    //   })
-    // )
   }
 
   ngOnDestroy() {

@@ -19,7 +19,6 @@ export class DeleteDialogComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.data)
-    debugger
   }
 
   yes() {

@@ -22,9 +22,7 @@ export class EditDialogComponent implements OnInit {
   }
 
   ngOnInit() {
-    debugger
     let chocenProduct = this.data.chocenProduct;
-    debugger
     this.dialogForm = new FormGroup({
       title: new FormControl(chocenProduct.title),
       image: new FormControl(chocenProduct.image),
@@ -33,11 +31,9 @@ export class EditDialogComponent implements OnInit {
       batteryCapacity: new FormControl(chocenProduct.configure.batteryCapacity),
       maxSpeed: new FormControl(chocenProduct.configure.maxSpeed),
     });
-    debugger
   }
 
   onSubmit() {
-    debugger
     console.log(this.data);
     this.data = {
       id: this.data.chocenProduct.id,
@@ -50,7 +46,6 @@ export class EditDialogComponent implements OnInit {
         maxSpeed: this.dialogForm.value.maxSpeed
       }
     }
-    debugger
     this.dialogRef.close(this.data);
   }
 }

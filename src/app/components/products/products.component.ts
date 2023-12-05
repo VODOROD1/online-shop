@@ -26,11 +26,9 @@ export class ProductsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    debugger
     this.canEdit = true;
     this.productsSubscription = this.productsService.getProducts()
     .subscribe(result => {
-      debugger
       this.products = result;
     })
 
@@ -64,11 +62,9 @@ export class ProductsComponent implements OnInit, OnDestroy {
     dialogConfig.data = {
       chocenProduct
     }
-    debugger
     const dialogRef = this.dialog.open(EditDialogComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe(result => {
-      debugger
       if(result) {
         this.updateProduct(result);
       }
@@ -83,11 +79,9 @@ export class ProductsComponent implements OnInit, OnDestroy {
     dialogConfig.height = '150px';
     dialogConfig.disableClose = true;
     dialogConfig.id = id;
-    debugger
     const dialogRef = this.dialog.open(DeleteDialogComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe(result => {
-      debugger
       if(result) {
         this.deleteProduct();
       }
@@ -105,7 +99,6 @@ export class ProductsComponent implements OnInit, OnDestroy {
   updateProduct(chocenProduct: IProduct) {
     this.productsService.updateProduct(chocenProduct)
     .subscribe(result => {
-      debugger
       this.products = this.products.map(product => {
         if(product.id === chocenProduct.id) {
           return result;
@@ -113,14 +106,12 @@ export class ProductsComponent implements OnInit, OnDestroy {
           return product;
         }
       })
-      debugger
     })
   }
 
   deleteProduct() {
     this.productsService.deleteProduct(this.chocenProductId)
     .subscribe(result => {
-      debugger
       this.products = this.products.filter(product => {
         return product.id !== this.chocenProductId;
       })
@@ -128,24 +119,17 @@ export class ProductsComponent implements OnInit, OnDestroy {
   }
 
   addToBasket(product: IProduct) {
-    debugger
     product.quantity = 1;
     if(this.basket.length > 0) {
-      debugger
       let findItem = this.basket.find(elem => {
         return elem.id === product.id;
       })
-      debugger
       if(findItem) {
-        debugger
         this.updateToBasket(findItem);
       } else {
-        debugger
         this.postToBasket(product);
       }
-      debugger
     } else {
-      debugger
       this.postToBasket(product);
     }
   }

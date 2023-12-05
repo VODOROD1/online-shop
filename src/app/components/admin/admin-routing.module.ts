@@ -5,14 +5,19 @@ import { ContactsComponent } from './components/contacts/contacts.component';
 import { ContactsDetailsComponent } from './components/contacts-details/contacts-details.component';
 import { HomeComponent } from './components/home/home.component';
 import { UserResolver } from './resolvers/user.resolver';
+import { UsersResolver } from './resolvers/users.resolver';
 
 const routes: Routes = [{
   path: '', component: AdminDashboardComponent,
   children: [
-    {path: 'contacts', component: ContactsComponent},
+    {path: 'contacts', component: ContactsComponent,
+      resolve: {
+        param: UsersResolver
+      }
+    },
     {path: 'contacts/user/:id', component: ContactsDetailsComponent, 
       resolve: {
-        someKey: UserResolver
+        param: UserResolver
       }
     },
     {path: 'contacts/user', redirectTo: 'contacts', pathMatch: 'full'},
