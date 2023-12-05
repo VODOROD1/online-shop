@@ -4,7 +4,6 @@ import {User} from '../../user';
 import {AdminService} from '../../services/admin.service';
 import {ActivatedRoute, ResolveEnd, ResolveStart, Router} from '@angular/router';
 
-
 @Component({
   selector: 'app-contacts',
   templateUrl: './contacts.component.html',
