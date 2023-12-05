@@ -11,7 +11,6 @@ export class ProductResolver implements Resolve<IProduct> {
   constructor(private productsService: ProductsService, private router: Router) {}
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<IProduct> {
-    debugger
     return this.productsService.getProduct(route.params?.['id'])
       .pipe(catchError(() => {
         this.router.navigate(['products']);

@@ -38,11 +38,9 @@ export class AuthService {
   }
 
   logout() {
-    debugger
     if(confirm('Вы уверены?')) {
       this.isSure = true;
       localStorage.removeItem('token');
-      debugger
       this.router.navigate(['login']);
     }
   }
